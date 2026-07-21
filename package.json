@@ -1,0 +1,16 @@
+{
+  "name": "kuchupuchu",
+  "version": "1.0.0",
+  "description": "Romantic Date Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
