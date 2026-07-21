@@ -61,11 +61,12 @@ body{
 
 .card h1{
 
-    font-size:clamp(28px,5vw,42px);
-
+    /* font-size:clamp(28px,5vw,42px);
+     */
+     font-size: clamp(28px, 5vw, 40px);
     color:#d63384;
 
-    margin-bottom:clamp(5px,1vh,15px);
+    margin-bottom:clamp(10px,1vh,20px);
 
     font-family:"Great Vibes",cursive;
 
@@ -73,9 +74,9 @@ body{
 
 .card p{
 
-    font-size:clamp(16px,2.8vw,22px);
-
-    line-height:1.1;
+    /* font-size:clamp(16px,2.8vw,22px); */
+    font-size: clamp(16px, 2.5vw, 22px);
+    line-height:1.5;
 
     color:#7b0692;
 
@@ -87,7 +88,7 @@ body{
 
 .card button {
 
-    padding: clamp(5px,1vw,50px);
+    padding: 10px 20px;
     border: none;
 
     border-radius: 50px;
@@ -98,7 +99,9 @@ body{
 
     color: white;
 
-    font-size: clamp(12px,3vw,24px);
+    /* font-size: clamp(12px,3vw,24px); */
+
+    font-size: clamp(16px, 2.5vw, 20px);
 
     font-weight: 900;
 
@@ -106,7 +109,7 @@ body{
 
     transition: .35s;
 
-    margin-top: clamp(5px,1vh,15px);
+    margin-top: 15px;
 }
 
 .card button:hover {
@@ -128,7 +131,7 @@ body{
 
     height: 120px;
 
-    margin-top: clamp(5px,1vh,25px);
+    margin-top: 15px;
 
     display: flex;
 
@@ -141,7 +144,7 @@ body{
 
 .yesBtn {
 
-    padding: clamp(15px,1vw,50px);
+    padding: 10px 20px;
 
     background: #ff5d8f;
 
@@ -159,7 +162,7 @@ body{
 }
 
 .noBtn {
-    padding: clamp(15px,1vw,50px);
+    padding: 10px 20px;
 
     background: #f1f1f1;
 
@@ -190,7 +193,8 @@ body{
 
     border-radius: 15px;
 
-    font-size: clamp(11px,1vw,15px);
+    /* font-size: clamp(11px,1vw,15px); */
+    font-size: 16px;
 
     background: rgba(255, 255, 255, .75);
 
@@ -215,14 +219,14 @@ body{
 
     grid-template-columns: 1fr 1fr;
 
-    gap: clamp(1px,0.5vh,15px);
+    gap: clamp(5px,1vh,15px);
 
-    margin: clamp(5px,1vh,30px) 0;
+    margin: clamp(15px,1vh,50px) 0;
 }
 
 .place-card {
 
-    padding: clamp( 5px,1vh,15px);
+    padding: clamp( 10px,1vh,25px);
 
     background: rgba(255, 255, 255, .5);
 
@@ -234,7 +238,7 @@ body{
 
     transition: .3s;
 
-    font-size: clamp(12px,1vw,24px);
+    font-size: clamp(14px,1vw,24px);
 }
 
 .place-card:hover {
@@ -258,6 +262,8 @@ body{
     color: white;
 
     border-color: #ff5d8f;
+
+    font-weight: 900;
 }
 
 .card textarea {
@@ -280,7 +286,9 @@ body{
 
     background: rgba(255, 255, 255, .75);
 
-    font-size: clamp(11px,1vw,18px);
+    /* font-size: clamp(11px,1vw,18px); */
+
+    font-size: 16px;
 
     color: #5d4157;
 

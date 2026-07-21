@@ -1,15 +1,28 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const { google } = require("googleapis");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
-// Parse JSON requests
 app.use(express.json());
-
-// Serve static files
 app.use(express.static(__dirname));
+
+const auth = new google.auth.GoogleAuth({
+    keyFile: "service-account.json",
+    scopes: [
+        "https://www.googleapis.com/auth/spreadsheets"
+    ]
+});
+
+const sheets = google.sheets({
+    version: "v4",
+    auth
+});
+
+const SPREADSHEET_ID = "1Qmj28STjpOpxH9bZbaMuzIh1lRY3nNWnJLaY-b6QuUI";
+
 
 const DATA_DIR = path.join(__dirname, "data");
 const FILE = path.join(DATA_DIR, "responses.json");
@@ -35,29 +48,51 @@ app.get("/health", (req, res) => {
 });
 
 // Save responses
-app.post("/submit", (req, res) => {
+app.post("/submit", async (req, res) => {
 
     try {
 
-        const newResponse = {
-            id: Date.now(),
-            submittedAt: new Date().toLocaleString(),
-            ...req.body
-        };
+        const {
+            date,
+            time,
+            place,
+            message
+        } = req.body;
 
-        const data = fs.readFileSync(FILE, "utf8");
-        const responses = JSON.parse(data);
+        await sheets.spreadsheets.values.append({
 
-        responses.push(newResponse);
+            spreadsheetId: SPREADSHEET_ID,
 
-        fs.writeFileSync(
-            FILE,
-            JSON.stringify(responses, null, 4)
-        );
+            range: "Sheet1!A:E",
+
+            valueInputOption: "USER_ENTERED",
+
+            requestBody: {
+
+                values: [[
+
+                    new Date().toLocaleString(),
+
+                    date,
+
+                    time,
+
+                    place,
+
+                    message
+
+                ]]
+
+            }
+
+        });
 
         res.json({
+
             success: true,
+
             message: "Response saved ❤️"
+
         });
 
     } catch (err) {
@@ -65,8 +100,11 @@ app.post("/submit", (req, res) => {
         console.error(err);
 
         res.status(500).json({
+
             success: false,
-            message: "Server error"
+
+            message: "Failed to save response"
+
         });
 
     }
@@ -76,3 +114,4 @@ app.post("/submit", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
